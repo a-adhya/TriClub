@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Bike.module.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -16,48 +16,67 @@ export default function Bike() {
       executeStravaLogic()
       .then(data => {
         setActivities(data);
+
       })
       .catch(error => console.error('Error fetching activities:', error));
   }, []);
     
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>TriTracker</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <nav>
-        <Nav />
-      </nav>
-      <main>
-        <h1 className={styles.title}>
-          Welcome to TriTracker
-        </h1>
-        <div>
-          
+    <div className={styles.bike}>
+      <div className={styles.div}>
+        <div className={styles.group}>
+          <div className={styles.group2}>
+            <div className={styles.rectangle} />
+            <div className={styles.rectangle2} />
+            <div className={styles.rectangle3} />
+          </div>
         </div>
-        
-        <div>
-        <h2>
-            You biked {getWeeklyTime("Ride")[0]} hours, {getWeeklyTime("Ride")[1]} minutes, and {getWeeklyTime("Ride")[2]} seconds
-          </h2>
-          <h2>
-            You biked {getWeeklyDistance("Ride")} miles this week.
-          </h2>
+        <div className={styles.overlap}>
+          <div className={styles.totalDistance}>
+            total <br />
+            distance
+          </div>
+          <div className={styles.textWrapper}>25.50 mi</div>
         </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
+        <div className={styles.overlapGroup}>
+          <div className={styles.rectangle4} />
+          <div className={styles.totalTime}>
+            total <br />
+            time
+          </div>
+          <div className={styles.textWrapper2}>10:00:59</div>
+        </div>
+        <div className={styles.overlap2}>
+          <div className={styles.overlapGroup2}>
+            <div className={styles.rectangle5} />
+            <div className={styles.rectangle6} />
+            <img className={styles.img} alt="Rectangle" src="https://c.animaapp.com/c5lDQwWX/img/rectangle-18.svg" />
+            <p className={styles.elementMileBike}>
+              4 mile bike
+              <br />
+              15:26 moving time
+            </p>
+            <p className={styles.p}>
+              4 mile bike
+              <br />
+              15:26 moving time
+            </p>
+            <div className={styles.textWrapper3}>all rides this week</div>
+            <div className={styles.rectangle7} />
+            <div className={styles.textWrapper4}>average pace/ride</div>
+            <div className={styles.textWrapper5}>6 min/mi</div>
+          </div>
+          <div className={styles.divWrapper}>
+            <p className={styles.textWrapper6}>Click for more stats ...</p>
+          </div>
+        </div>
+        <div className={styles.overlap3}>
+          <div className={styles.rectangle8} />
+          <p className={styles.textWrapper7}>at a glance...your weekly rides</p>
+        </div>
+        <div className={styles.rectangle9} />
+      </div>
     </div>
   );
 }

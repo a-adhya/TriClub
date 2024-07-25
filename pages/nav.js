@@ -24,6 +24,9 @@ export default function Nav() {
             <li>
                 <Link href="/trainer">Trainer</Link>
             </li>
+            <li>
+                <Link href="/dashboard">Dashboard</Link>
+            </li>
         </ul>
     )
 }

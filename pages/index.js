@@ -111,48 +111,68 @@ export default function Home() {
         <Nav />
       </nav>
       <main>
-        <h1 className={styles.title}>
-          Welcome to TriTracker
-        </h1>
-        <div>
-          
+        <div className="flex flex-col items-center px-10 pt-6 pb-11 bg-gray-200 max-md:px-5">
+        <div className="flex gap-5 justify-center w-full max-md:flex-wrap max-md:max-w-full">
+            <div className="flex flex-col self-end mt-6">
+            <div className="shrink-0 h-1.5 bg-neutral-400" />
+            <div className="shrink-0 mt-5 bg-neutral-400 h-[7px]" />
+            </div>
+            <div className="grow justify-center py-2.5 pr-20 pl-24 text-5xl text-center text-white bg-orange-400 rounded-3xl border-4 border-solid border-white border-opacity-0 w-fit max-md:pr-8 max-md:pl-5 max-md:max-w-full max-md:text-4xl">
+            welcome...here are your weekly triathlon stats
+            </div>
         </div>
-        
-        <div>
-          <h2>
-            This week you moved {getWeeklyTime("All", activities)[0]} hours, {getWeeklyTime("All", activities)[1]} minutes, and {getWeeklyTime("All", activities)[2]} seconds
-          </h2>
-          <h2>
-            You moved {getWeeklyDistance("All", activities)} miles this week.
-          </h2>
-          <h2>
-            You ran {getWeeklyTime("Run", activities)[0]} hours, {getWeeklyTime("Run", activities)[1]} minutes, and {getWeeklyTime("Run", activities)[2]} seconds
-          </h2>
-          <h2>
-            You ran {getWeeklyDistance("Run", activities)} miles this week.
-          </h2>
-          <h2>
-            You biked {getWeeklyTime("Ride", activities)[0]} hours, {getWeeklyTime("Ride", activities)[1]} minutes, and {getWeeklyTime("Ride", activities)[2]} seconds
-          </h2>
-          <h2>
-            You biked {getWeeklyDistance("Ride", activities)} miles this week.
-          </h2>
-          <h2>
-            You swam {getWeeklyTime("Swim", activities)[0]} hours, {getWeeklyTime("Swim", activities)[1]} minutes, and {getWeeklyTime("Swim", activities)[2]} seconds
-          </h2>
-          <h2>
-            You swam {getWeeklyDistance("Swim", activities)} miles this week.
-          </h2>
-          {activities ? (
-            <ul>
-              {activities.map(activity => (
-                <li key={activity.id}>{activity.name}</li>
-                  
-              ))}
-            </ul>
-          ) : (
-            <p>Loading activities...</p>
-          )}
+        <div className="shrink-0 mt-3 ml-4 h-1.5 bg
+        .+-neutral-400 w-[50px] max-md:ml-2.5" />
+        <div className="self-stretch mt-20 max-md:mt-10 max-md:max-w-full">
+            <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+            <div className="flex flex-col w-[54%] max-md:ml-0 max-md:w-full">
+                <div className="flex flex-col grow items-center mt-3.5 max-md:mt-10 max-md:max-w-full">
+                <div className="flex gap-5 self-stretch text-center text-orange-400 max-md:flex-wrap">
+                    <div className="flex-auto text-8xl max-md:text-4xl">
+                    {getWeeklyDistance("All", activities)} mi
+                    </div>
+                    <div className="text-5xl">
+                    total <br />
+                    distance
+                    </div>
+                </div>
+                <div className="self-stretch px-11 py-9 mt-14 bg-orange-400 rounded-3xl border-4 border-solid border-neutral-200 max-md:px-5 max-md:mt-10 max-md:max-w-full">
+                    <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <div className="flex flex-col w-[69%] max-md:ml-0 max-md:w-full">
+                        <div className="text-8xl text-center text-white underline border border-amber-500 border-solid max-md:mt-10 max-md:text-4xl">
+                        {getWeeklyTime("All", activities)[0] === 0 ? "00" : getWeeklyTime("All", activities)[0]}:{getWeeklyTime("All", activities)[1] === 0 ? "00" : getWeeklyTime("All", activities)[1]}:{getWeeklyTime("All", activities)[2] === 0 ? "00" : getWeeklyTime("All", activities)[2]}
+                        </div>
+                    </div>
+                    <div className="flex flex-col ml-5 w-[31%] max-md:ml-0 max-md:w-full">
+                        <div className="text-5xl text-center text-gray-200 border border-amber-500 border-solid max-md:mt-10">
+                        total <br />
+                        time
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className="justify-center px-5 py-11 mt-9 max-w-full text-5xl text-center text-white rounded-3xl border-4 border-solid bg-orange-400 bg-opacity-60 border-white border-opacity-0 w-[484px] max-md:max-w-full">
+                    latest activities...
+                </div>
+                <div className="shrink-0 mt-9 max-w-full rounded-3xl border-4 border-solid bg-orange-400 bg-opacity-60 border-white border-opacity-0 h-[118px] w-[484px]" />
+                <div className="shrink-0 mt-9 max-w-full rounded-3xl border-4 border-solid bg-orange-400 bg-opacity-60 border-white border-opacity-0 h-[118px] w-[484px]" />
+                </div>
+            </div>
+            <div className="flex flex-col ml-5 w-[46%] max-md:ml-0 max-md:w-full">
+                <div className="flex flex-col grow text-5xl text-center text-white max-md:mt-10 max-md:max-w-full max-md:text-4xl">
+                <div className="items-center px-16 pt-12 pb-24 rounded-3xl border-4 border-gray-200 border-solid bg-green-900 bg-opacity-40 max-md:px-5 max-md:max-w-full max-md:text-4xl">
+                    run breakdown
+                </div>
+                <div className="items-center px-16 pt-12 pb-32 mt-11 rounded-3xl border-4 border-gray-200 border-solid bg-black bg-opacity-40 max-md:px-5 max-md:pb-10 max-md:mt-10 max-md:max-w-full max-md:text-4xl">
+                    bike breakdown
+                </div>
+                <div className="items-center px-16 pt-11 pb-28 mt-11 rounded-3xl border-4 border-gray-200 border-solid bg-blue-300 bg-opacity-40 max-md:px-5 max-md:mt-10 max-md:max-w-full max-md:text-4xl">
+                    swim breakdown
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
         </div>
       </main>
 

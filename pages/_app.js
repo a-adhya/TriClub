@@ -1,11 +1,14 @@
-//import '../styles/globals.css';
+import '../styles/global.css';
 import { ApiDataProvider } from '../context/apiContext';
+import { Inconsolata } from 'next/font/google'
+
+const inconsolata = Inconsolata({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ApiDataProvider>
+    <main className={inconsolata.className}>
       <Component {...pageProps} />
-    </ApiDataProvider>
+    </main>
   );
 }
 

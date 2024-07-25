@@ -1,0 +1,357 @@
+.bike {
+    background-color: #e9e9e9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .bike .div {
+    background-color: #e9e9e9;
+    height: 982px;
+    overflow: hidden;
+    position: relative;
+    width: 1512px;
+  }
+  
+  .bike .group {
+    height: 55px;
+    left: 55px;
+    position: absolute;
+    top: 47px;
+    width: 50px;
+  }
+  
+  .bike .group-2 {
+    height: 55px;
+    position: relative;
+  }
+  
+  .bike .rectangle {
+    background-color: #929292;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50px;
+  }
+  
+  .bike .rectangle-2 {
+    background-color: #929292;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 24px;
+    width: 50px;
+  }
+  
+  .bike .rectangle-3 {
+    background-color: #929292;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 49px;
+    width: 50px;
+  }
+  
+  .bike .overlap {
+    background-color: #eabb75;
+    border: 4px solid;
+    border-color: #e9e9e9;
+    border-radius: 20px;
+    height: 143px;
+    left: 29px;
+    position: absolute;
+    top: 168px;
+    width: 633px;
+  }
+  
+  .bike .total-distance {
+    -webkit-text-stroke: 1px #ff9900;
+    color: #e9e9e9;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 40px;
+    font-weight: 400;
+    left: 434px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 26px;
+    width: 194px;
+  }
+  
+  .bike .text-wrapper {
+    -webkit-text-stroke: 1px #ff9900;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 96px;
+    font-weight: 400;
+    left: 58px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-decoration: underline;
+    top: 19px;
+    white-space: nowrap;
+  }
+  
+  .bike .overlap-group {
+    height: 141px;
+    left: 29px;
+    position: absolute;
+    top: 336px;
+    width: 640px;
+  }
+  
+  .bike .rectangle-4 {
+    background-color: #eabb76;
+    border: 4px solid;
+    border-color: #e6e6e6;
+    border-radius: 20px;
+    height: 141px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 633px;
+  }
+  
+  .bike .total-time {
+    -webkit-text-stroke: 1px #ff9900;
+    color: #e9e9e9;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 40px;
+    font-weight: 400;
+    left: 446px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 29px;
+    width: 194px;
+  }
+  
+  .bike .text-wrapper-2 {
+    -webkit-text-stroke: 1px #ff9900;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 80px;
+    font-weight: 400;
+    left: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-decoration: underline;
+    top: 29px;
+    width: 388px;
+  }
+  
+  .bike .overlap-2 {
+    height: 457px;
+    left: -257px;
+    position: absolute;
+    top: 491px;
+    width: 1596px;
+  }
+  
+  .bike .overlap-group-2 {
+    height: 457px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1596px;
+  }
+  
+  .bike .rectangle-5 {
+    background-color: #8c99ab;
+    border: 4px solid;
+    border-color: #e7ca9f;
+    border-radius: 20px;
+    height: 457px;
+    left: 284px;
+    position: absolute;
+    top: 0;
+    width: 629px;
+  }
+  
+  .bike .rectangle-6 {
+    background-color: #e7ca9f;
+    border: 4px solid;
+    border-color: transparent;
+    border-radius: 20px;
+    height: 118px;
+    left: 370px;
+    position: absolute;
+    top: 110px;
+    width: 447px;
+  }
+  
+  .bike .img {
+    height: 118px;
+    left: 368px;
+    position: absolute;
+    top: 265px;
+    width: 447px;
+  }
+  
+  .bike .element-mile-bike {
+    -webkit-text-stroke: 1px transparent;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 45px;
+    font-weight: 400;
+    left: 288px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 120px;
+    width: 610px;
+  }
+  
+  .bike .p {
+    -webkit-text-stroke: 1px transparent;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 45px;
+    font-weight: 400;
+    left: 286px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 279px;
+    width: 610px;
+  }
+  
+  .bike .text-wrapper-3 {
+    -webkit-text-stroke: 1px transparent;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 48px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 35px;
+    white-space: nowrap;
+    width: 1186px;
+  }
+  
+  .bike .rectangle-7 {
+    background-color: #8c99ab;
+    border: 4px solid;
+    border-color: #e7ca9f;
+    border-radius: 20px;
+    height: 285px;
+    left: 963px;
+    position: absolute;
+    top: 10px;
+    width: 633px;
+  }
+  
+  .bike .text-wrapper-4 {
+    -webkit-text-stroke: 1px transparent;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 36px;
+    font-weight: 400;
+    left: 974px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 35px;
+    width: 610px;
+  }
+  
+  .bike .text-wrapper-5 {
+    -webkit-text-stroke: 1px transparent;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 70px;
+    font-weight: 400;
+    left: 974px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 138px;
+    width: 610px;
+  }
+  
+  .bike .div-wrapper {
+    background-image: url(https://c.animaapp.com/c5lDQwWX/img/rectangle-20.svg);
+    background-size: 100% 100%;
+    height: 118px;
+    left: 969px;
+    position: absolute;
+    top: 339px;
+    width: 627px;
+  }
+  
+  .bike .text-wrapper-6 {
+    -webkit-text-stroke: 1px transparent;
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 45px;
+    font-weight: 400;
+    left: 11px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 31px;
+    width: 610px;
+  }
+  
+  .bike .overlap-3 {
+    height: 83px;
+    left: 148px;
+    position: absolute;
+    top: 53px;
+    width: 1186px;
+  }
+  
+  .bike .rectangle-8 {
+    background-color: #8c99ab;
+    border: 4px solid;
+    border-color: #e7ca9f;
+    border-radius: 20px;
+    height: 65px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1186px;
+  }
+  
+  .bike .text-wrapper-7 {
+    color: #ffffff;
+    font-family: "Kosugi Maru", Helvetica;
+    font-size: 48px;
+    font-weight: 400;
+    left: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+    width: 1156px;
+  }
+  
+  .bike .rectangle-9 {
+    background-color: #8c99ab;
+    border: 4px solid;
+    border-color: #e7ca9f;
+    border-radius: 20px;
+    height: 285px;
+    left: 712px;
+    position: absolute;
+    top: 167px;
+    width: 622px;
+  }
+  

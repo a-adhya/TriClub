@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family:
+  'Inconsolata', 
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -30,3 +31,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
