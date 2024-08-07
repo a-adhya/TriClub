@@ -1,32 +1,48 @@
-//import Head from 'next/head';
 import { useState, useEffect } from 'react';
-import { supabase } from '../utils/supabase';
-import styles from '../styles/Home.module.css';
+import { supabase } from '../../../utils/supabase';
+import styles from '../../../styles/Home.module.css';
 
 export default function UserProfile() {
   const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const userId = 1; // Replace with your hard-coded user ID
 
   useEffect(() => {
     const fetchProfile = async () => {
-      let { data: userProfile, error } = await supabase
-        .from('User Profile')
-        .select('*')
-        .eq('id', userId)
-        .single();
+      try {
+        let { data: userProfile, error } = await supabase
+          .from('profile')
+          .select('*')
+          .eq('user_id', userId)
+          .single();
 
-      if (error) {
+        if (error) {
+          throw error;
+        }
+
+        setProfile(userProfile);
+      } catch (error) {
         console.error('Error fetching profile:', error);
-      } else {
-        setProfile(data);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProfile();
-  }, []);
+  }, [userId]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   if (!profile) {
-    return <div>Loading...</div>;
+    return <div>No profile data found.</div>;
   }
 
   return (

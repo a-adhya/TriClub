@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../utils/supabase';
-import styles from '../styles/Home.module.css';
+import { supabase } from '../../utils/supabase';
+import styles from '../../styles/Home.module.css';
 
 export default function Followers() {
   const [profile, setProfile] = useState(null);
@@ -9,16 +9,17 @@ export default function Followers() {
   useEffect(() => {
     const fetchProfile = async () => {
       let { data: followersProfiles, error } = await supabase
-        .from('Followers')
+        .from('followers')
         .select(`
           follower_id,
-          UserProfile:User Profile (*)
+          profile!followers_follower_id_fkey (*)
         `)
         .eq('user_id', userId);
 
       if (error) {
         console.error('Error fetching followers profiles:', error);
       } else {
+        console.log("Profile:", followersProfiles)
         setProfile(followersProfiles);
       }
     };
@@ -28,7 +29,7 @@ export default function Followers() {
 
   const removeFollower = async (followerId) => {
     const { error } = await supabase
-      .from('Followers')
+      .from('followers')
       .delete()
       .eq('user_id', userId)
       .eq('follower_id', followerId);
@@ -50,9 +51,9 @@ export default function Followers() {
       <div>
         {profile.map((followerProfile, index) => (
           <div key={index}>
-            <h2>{followerProfile.UserProfile.name}</h2>
-            <p>Location: {followerProfile.UserProfile.location_city}, {followerProfile.UserProfile.location_state}</p>
-            <p>Training For: {followerProfile.UserProfile.training_for}</p>
+            <h2>{followerProfile.profile.name}</h2>
+            <p>Location: {followerProfile.profile.location_city}, {followerProfile.profile.location_state}</p>
+            <p>Training For: {followerProfile.profile.training_for}</p>
             <button onClick={() => removeFollower(followerProfile.follower_id)}>Remove Follower</button>
           </div>
         ))}

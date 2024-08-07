@@ -55,7 +55,7 @@ const isStravaTokenExpired = (currentExpirationTime) => {
     let { data, error } = await supabase
       .from('Auth')
       .update({ expiration_time: newTokenData.expirationTime, refresh_token: newTokenData.refreshToken, access_token: newTokenData.accessToken })
-      .eq('id', 1)
+      .eq('user_id', 1)
 
   };
   

@@ -1,34 +1,39 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../utils/supabase';
-import styles from '../styles/Home.module.css';
-//import Head from 'next/head';
+import { supabase } from '../../../utils/supabase';
+import styles from '../../../styles/Home.module.css';
 
 export default function EditUserProfile() {
   const [profile, setProfile] = useState({
-    profile_picture: '',
     name: '',
-    race_training_for: '',
-    num_following: 0,
-    num_followers: 0,
-    based_in: '',
+    training_for: '',
+    following: 0,
+    followers: 0,
+    location_city: '',
     goal: '',
-    latest_activities: [],
     strava_id: ''
   });
-  const userId = 'hardcoded-user-id'; // Replace with your hard-coded user ID
+  const userId = 1; // Replace with your hard-coded user ID
 
   useEffect(() => {
     const fetchProfile = async () => {
       const { data: userProfile, error } = await supabase
-        .from('profiles')
+        .from('profile')
         .select('*')
-        .eq('id', userId)
+        .eq('user_id', userId)
         .single();
-
       if (error) {
         console.error('Error fetching profile:', error);
-      } else {
-        setProfile(userProfile);
+      } else if (userProfile) {
+        // Ensure all fields are defined
+        setProfile({
+          name: userProfile.name || '',
+          training_for: userProfile.training_for || '',
+          following: userProfile.following || 0,
+          followers: userProfile.followers || 0,
+          location_city: userProfile.location_city || '',
+          goal: userProfile.goal || '',
+          strava_id: userProfile.strava_id || ''
+        });
       }
     };
 
@@ -46,9 +51,9 @@ export default function EditUserProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { error } = await supabase
-      .from('profiles')
+      .from('User Profile')
       .update(profile)
-      .eq('id', userId);
+      .eq('user_id', userId);
 
     if (error) {
       console.error('Error updating profile:', error);
@@ -63,13 +68,9 @@ export default function EditUserProfile() {
 
   return (
     <div className={styles.container}>
-      {/* <Head>
-        <title>Edit User Profile</title>
-        <meta name="description" content="Edit user profile details" />
-      </Head> */}
       <h1>Edit User Profile</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           <label>Profile Picture URL:</label>
           <input
             type="text"
@@ -77,7 +78,7 @@ export default function EditUserProfile() {
             value={profile.profile_picture}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div>
           <label>Name:</label>
           <input
@@ -91,8 +92,8 @@ export default function EditUserProfile() {
           <label>Race Training For:</label>
           <input
             type="text"
-            name="race_training_for"
-            value={profile.race_training_for}
+            name="training_for"
+            value={profile.training_for}
             onChange={handleChange}
           />
         </div>
@@ -100,8 +101,8 @@ export default function EditUserProfile() {
           <label>Num Following:</label>
           <input
             type="number"
-            name="num_following"
-            value={profile.num_following}
+            name="following"
+            value={profile.following}
             onChange={handleChange}
           />
         </div>
@@ -109,8 +110,8 @@ export default function EditUserProfile() {
           <label>Num Followers:</label>
           <input
             type="number"
-            name="num_followers"
-            value={profile.num_followers}
+            name="followers"
+            value={profile.followers}
             onChange={handleChange}
           />
         </div>
@@ -118,8 +119,8 @@ export default function EditUserProfile() {
           <label>Based in:</label>
           <input
             type="text"
-            name="based_in"
-            value={profile.based_in}
+            name="location_city" // Corrected name attribute
+            value={profile.location_city}
             onChange={handleChange}
           />
         </div>

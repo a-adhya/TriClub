@@ -27,6 +27,9 @@ export default function Nav() {
             <li>
                 <Link href="/dashboard">Dashboard</Link>
             </li>
+            <li>
+                <Link href="/triClub/">TriClub</Link>
+            </li>
         </ul>
     )
 }
