@@ -10,6 +10,7 @@
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
+    "geonames.js": "^3.0.6",
     "isomorphic-unfetch": "^4.0.2",
     "next": "latest",
     "react": "18.2.0",

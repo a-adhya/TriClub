@@ -18,9 +18,9 @@ const isStravaTokenExpired = (currentExpirationTime) => {
 
     
       let {data, error} = await supabase
-      .from('Auth')
+      .from('auth')
       .select('client_id, client_secret, refresh_token')
-      .eq('id', 1)
+      .eq('user_id', 1)
 
       if (error) {
         console.log('Error fetching data from Supabase')
@@ -53,7 +53,7 @@ const isStravaTokenExpired = (currentExpirationTime) => {
   const persistNewTokenData = async (newTokenData) => {
     // Update the relevant key with the new value
     let { data, error } = await supabase
-      .from('Auth')
+      .from('auth')
       .update({ expiration_time: newTokenData.expirationTime, refresh_token: newTokenData.refreshToken, access_token: newTokenData.accessToken })
       .eq('user_id', 1)
 
@@ -65,9 +65,9 @@ const isStravaTokenExpired = (currentExpirationTime) => {
     console.log('Requesting activity data from Strava...');
     let myHeaders = new Headers();
     let {data, error} = await supabase
-      .from('Auth')
+      .from('auth')
       .select('access_token')
-      .eq('id', 1)
+      .eq('user_id', 1)
 
 
     myHeaders.append("Authorization", `Bearer ${data[0].access_token}`);
@@ -90,9 +90,9 @@ const isStravaTokenExpired = (currentExpirationTime) => {
   //check to see if the expiration time has passed
   const executeStravaLogic = async () => {
     let { data, expirationTimeError } = await supabase
-      .from('Auth')
+      .from('auth')
       .select('expiration_time')
-      .eq('id', 1)
+      .eq('user_id', 1)
     
     const isTokenExpired = isStravaTokenExpired(data[0].expiration_time);
 
