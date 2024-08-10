@@ -8,7 +8,7 @@ export default function Discover() {
     // Include a button to follow them
     // Make entire view pressable
     // When pressed, redirect to their profile
-    const [locationRange, setLocationRange] = useState(5);
+    const [locationRange, setLocationRange] = useState(10);
     const [location, setLocation] = useState([]);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
@@ -65,13 +65,33 @@ export default function Discover() {
         try {
         const nearbyPlaces = await geonames.findNearbyPlaceName({
             lat: latitude,
-            lon: longitude,
+            lng: longitude,
             radius: milesToKilometers(locationRange),
         })
         console.log(nearbyPlaces);
         setNearbyPlaces(nearbyPlaces);
         } catch (error) {
             console.error('Error fetching nearby places:', error);
+        }
+    };
+
+    const findNearbyUsers = async () => {
+        if (!nearbyPlaces || nearbyPlaces.length === 0) return;
+    
+        const nearbyStates = nearbyPlaces.map(place => place.adminCode1);
+        const nearbyCities = nearbyPlaces.map(place => place.toponymName);
+    
+        const { data: nearbyUsersData, error: nearbyUsersError } = await supabase
+            .from('profile')
+            .select('name, location_city, location_state, training_for')
+            .in('location_state', nearbyStates)
+            .in('location_city', nearbyCities);
+    
+        if (nearbyUsersError) {
+            console.error('Error fetching nearby users:', nearbyUsersError);
+        } else {
+            console.log("Nearby Users:", nearbyUsersData);
+            setNearbyUsers(nearbyUsersData);
         }
     };
 
@@ -90,6 +110,13 @@ export default function Discover() {
             fetchNearbyPlaces();
         }
     }, [latitude, longitude, locationRange]);
+
+    useEffect(() => {
+        if (nearbyPlaces !== undefined) {
+            console.log("Nearby Places:", nearbyPlaces)
+            findNearbyUsers();
+        }
+    }, [nearbyPlaces]);
 
     return(
         <div>
