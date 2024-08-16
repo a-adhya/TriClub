@@ -13,6 +13,7 @@ export default function Discover() {
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
     const [nearbyPlaces, setNearbyPlaces] = useState();
+    const [nearbyUsers, setNearbyUsers] = useState();
 
     const geonames = Geonames({
         username: process.env.NEXT_PUBLIC_GEONAMES_USERNAME,
@@ -69,7 +70,7 @@ export default function Discover() {
             radius: milesToKilometers(locationRange),
         })
         console.log(nearbyPlaces);
-        setNearbyPlaces(nearbyPlaces);
+        setNearbyPlaces(nearbyPlaces.geonames);
         } catch (error) {
             console.error('Error fetching nearby places:', error);
         }
@@ -77,22 +78,35 @@ export default function Discover() {
 
     const findNearbyUsers = async () => {
         if (!nearbyPlaces || nearbyPlaces.length === 0) return;
-    
-        const nearbyStates = nearbyPlaces.map(place => place.adminCode1);
-        const nearbyCities = nearbyPlaces.map(place => place.toponymName);
-    
-        const { data: nearbyUsersData, error: nearbyUsersError } = await supabase
-            .from('profile')
-            .select('name, location_city, location_state, training_for')
-            .in('location_state', nearbyStates)
-            .in('location_city', nearbyCities);
-    
-        if (nearbyUsersError) {
-            console.error('Error fetching nearby users:', nearbyUsersError);
-        } else {
-            console.log("Nearby Users:", nearbyUsersData);
-            setNearbyUsers(nearbyUsersData);
+
+        console.log("Nearby Places:", nearbyPlaces)
+
+        let nearbyLocations = [];
+        for (const place of nearbyPlaces) {
+            nearbyLocations.push(place.toponymName + ", " + place.adminCode1);
         }
+
+        console.log("Nearby Locations:", nearbyLocations)
+    
+        try {
+        const { data: nearbyUsersData, error: nearbyUsersError } = await supabase
+        .from('profile')
+        .select('name, location_city, location_state, training_for')
+
+        setNearbyUsers(nearbyUsersData.filter(user => nearbyLocations.includes(user.location_city + ", " + user.location_state)));
+        console.log("Nearby Users:", nearbyUsers);
+        } catch (error) {
+            console.error('Error fetching nearby users:', error);
+        }
+
+
+    
+        // if (nearbyUsersError) {
+        //     console.error('Error fetching nearby users:', nearbyUsersError);
+        // } else {
+        //     console.log("Nearby Users:", nearbyUsersData);
+        //     setNearbyUsers(nearbyUsersData);
+        // }
     };
 
     useEffect(() => {
@@ -120,12 +134,17 @@ export default function Discover() {
 
     return(
         <div>
-            <h1>Discover</h1>
-            <p>{location[0]}</p>
-            <p>{location[1]}</p>
-            <p>{latitude}</p>
-            <p>{longitude}</p>
-        </div>
+      <h1>Discover Athletes Near You</h1>
+      <div>
+        {nearbyUsers && nearbyUsers.map((user, index) => (
+          <div key={index}>
+            <h2>{user.name}</h2>
+                <p>Location: {user.location_city}, {user.location_state}</p>
+                <p>Training For: {user.training_for}</p>
+          </div>
+        ))}
+      </div>
+    </div>
     )
 
 

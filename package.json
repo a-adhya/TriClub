@@ -12,7 +12,7 @@
     "fs": "^0.0.1-security",
     "geonames.js": "^3.0.6",
     "isomorphic-unfetch": "^4.0.2",
-    "next": "latest",
+    "next": "^14.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "supabase": "^1.176.10",
